@@ -8,3 +8,4 @@ prisma/dev.db*
 .DS_Store
 .claude/skills/
 
+prisma/migrations/dev.db*
