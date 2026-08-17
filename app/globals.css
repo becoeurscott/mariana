@@ -1726,3 +1726,63 @@ html.snap-scroll .snap-section { padding-top: 0; }
 @media (min-width: 1024px) {
   .footer__copy { padding: 16px 32px 0; }
 }
+
+/* ============================================================
+   GLOBAL SIDE MARGINS — guarantee content never touches the edges.
+   Uses a single --page-side token so every layout stays in sync.
+   ============================================================ */
+:root {
+  --page-side: 16px;
+}
+@media (min-width: 640px)  { :root { --page-side: 24px; } }
+@media (min-width: 1024px) { :root { --page-side: 32px; } }
+@media (min-width: 1440px) { :root { --page-side: 48px; } }
+
+/* .container is the single canonical wrapper for readable content. */
+.container {
+  padding-left: max(var(--page-side), env(safe-area-inset-left));
+  padding-right: max(var(--page-side), env(safe-area-inset-right));
+}
+
+/* Sections that don't have their own dark background inherit the safe padding.
+   `!important` needed because earlier mobile-fix rules set `padding` shorthand
+   with !important, which nukes left/right unless we do the same. */
+.harvest,
+.curated,
+.recipes,
+.checkout,
+.checkout__container,
+.one-screen {
+  padding-left: max(var(--page-side), env(safe-area-inset-left)) !important;
+  padding-right: max(var(--page-side), env(safe-area-inset-right)) !important;
+}
+
+/* Menu page content body */
+.menu-body,
+.menu-layout {
+  padding-left: max(var(--page-side), env(safe-area-inset-left));
+  padding-right: max(var(--page-side), env(safe-area-inset-right));
+}
+
+/* Track / tracking page */
+main.container { /* many pages use container on <main> — keep centred */ }
+
+/* Footer inner + copy already read the token */
+.footer__inner,
+.footer__copy {
+  padding-left: max(var(--page-side), env(safe-area-inset-left)) !important;
+  padding-right: max(var(--page-side), env(safe-area-inset-right)) !important;
+}
+
+/* Menu banner is dark & full-bleed — background reaches the edges but its
+   text content stays inset via an inner .container. */
+.menu-banner__content {
+  padding-left: max(var(--page-side), env(safe-area-inset-left));
+  padding-right: max(var(--page-side), env(safe-area-inset-right));
+}
+
+/* Admin: main pane already has its own padding but scope it to the token */
+.admin-main {
+  padding-left: max(var(--page-side), env(safe-area-inset-left)) !important;
+  padding-right: max(var(--page-side), env(safe-area-inset-right)) !important;
+}
