@@ -1,9 +1,17 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion } from 'framer-motion';
 
-export default function PaymentPage() {
+export default function PaymentPageWrapper() {
+  return (
+    <Suspense fallback={<main className="container" style={{ padding: 60 }}>Chargement…</main>}>
+      <PaymentPage />
+    </Suspense>
+  );
+}
+
+function PaymentPage() {
   const params = useSearchParams();
   const router = useRouter();
   const orderId = params.get('orderId');

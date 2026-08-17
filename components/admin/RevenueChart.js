@@ -37,7 +37,7 @@ export default function RevenueChart({ data }) {
               transition={{ duration: 0.6, delay: i * 0.03, ease: [0.22, 1, 0.36, 1] }}
               x={x} width={barW} rx={4} fill="#C88339"
             >
-              <title>{d.label} — {d.revenue.toFixed(2)}€ ({d.count} cmd.)</title>
+              <title>{`${d.label} — ${d.revenue.toFixed(2)}€ (${d.count} cmd.)`}</title>
             </motion.rect>
             <text x={x + barW / 2} y={h - pad.b + 14} textAnchor="middle" fontSize="10" fill="#5C5446">
               {d.label.split(' ')[0]}
