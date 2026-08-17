@@ -1,6 +1,7 @@
 import MenuGrid from '@/components/MenuGrid';
 import OrderSummary from '@/components/OrderSummary';
 import MobileCartCTA from '@/components/MobileCartCTA';
+import Reveal from '@/components/Reveal';
 import { getPublicMenu } from '@/services/menuService';
 
 export const dynamic = 'force-dynamic';
@@ -50,7 +51,9 @@ export default async function MenuPage() {
       <section className="container menu-body">
         <div className="menu-layout">
           <div className="menu-layout__main">
-            <MenuGrid categories={categories} />
+            <Reveal from="up" amount={0.05}>
+              <MenuGrid categories={categories} />
+            </Reveal>
           </div>
           <div className="menu-layout__sidebar hide-mobile">
             <OrderSummary />

@@ -40,7 +40,7 @@ export default function OneScreenHome() {
           </p>
           <div className="one-screen__ctas">
             <Link href="/menu" className="btn btn-primary">Commander</Link>
-            <Link href="#curated" className="btn btn-outline-gold">S&apos;abonner</Link>
+            <Link href="/contact" className="btn btn-outline-gold">Contactez</Link>
           </div>
           <div className="one-screen__reviews">
             <div className="one-screen__avatars">
@@ -76,8 +76,8 @@ export default function OneScreenHome() {
           className="one-screen__popular"
         >
           <div className="one-screen__stripHead">
-            <span className="one-screen__stripEyebrow">MEILLEURES VENTES</span>
-            <h3 className="serif one-screen__stripTitle">La Promesse de la Récolte</h3>
+            <span className="one-screen__stripEyebrow">CETTE SEMAINE</span>
+            <h3 className="serif one-screen__stripTitle">Menu du jour</h3>
           </div>
           <PopularCarousel compact />
         </motion.div>

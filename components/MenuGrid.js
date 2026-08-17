@@ -42,14 +42,16 @@ export default function MenuGrid({ categories }) {
       {/* Menu Grid */}
       <div className="menu-grid">
         <AnimatePresence mode="popLayout">
-          {items.map((it) => (
+          {items.map((it, i) => (
             <motion.article
               key={it.id}
               layout
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 24, scale: 0.98 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.25 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.5, delay: Math.min(i, 8) * 0.05, ease: [0.22, 1, 0.36, 1] }}
+              whileHover={{ y: -4 }}
               className="menu-card"
             >
               {/* Circular image */}
