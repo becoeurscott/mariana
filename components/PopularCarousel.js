@@ -2,45 +2,20 @@
 import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+/* Fallback only — the real dishes are passed in from the server. */
 const DEMO = [
-  { id: 1, name: 'Jollof Rice au poulet', image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=700&q=80', price: 24 },
-  { id: 2, name: 'Poulet Yassa',          image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=700&q=80', price: 23 },
-  { id: 3, name: 'Mafé de bœuf',          image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80', price: 25 },
-  { id: 4, name: 'Suya de bœuf',          image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=700&q=80', price: 22 },
+  { id: 1, name: 'Croque Monsieur', image: 'https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=700&q=80', price: 14 },
+  { id: 2, name: 'Lasagne',         image: 'https://images.unsplash.com/photo-1619895092538-128341789043?auto=format&fit=crop&w=700&q=80', price: 18 },
 ];
-
-const DAY_NAMES  = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
-const MONTH_ABBR = ['janv.', 'févr.', 'mars', 'avr.', 'mai', 'juin', 'juil.', 'août', 'sept.', 'oct.', 'nov.', 'déc.'];
-
-/** Returns [{ dayName, dateLabel }] for N consecutive days starting today. */
-function useWeekDays(count) {
-  const [days, setDays] = useState([]);
-  useEffect(() => {
-    const out = [];
-    const today = new Date();
-    for (let i = 0; i < count; i++) {
-      const d = new Date(today);
-      d.setDate(today.getDate() + i);
-      out.push({
-        dayName:   DAY_NAMES[d.getDay()],
-        dateLabel: `${d.getDate()} ${MONTH_ABBR[d.getMonth()]}`,
-      });
-    }
-    setDays(out);
-  }, [count]);
-  return days;
-}
 
 export default function PopularCarousel({ items, compact = false }) {
   const list = items?.length ? items : DEMO;
-  const days = useWeekDays(list.length);
   const [page, setPage] = useState(0);
   const perPage = 4;
   const totalPages = Math.max(1, Math.ceil(list.length / perPage));
   const visible = useMemo(
-    () => list.slice(page * perPage, page * perPage + perPage)
-              .map((it, i) => ({ ...it, day: days[page * perPage + i] })),
-    [list, page, days],
+    () => list.slice(page * perPage, page * perPage + perPage),
+    [list, page],
   );
 
   useEffect(() => {
@@ -54,16 +29,18 @@ export default function PopularCarousel({ items, compact = false }) {
       {!compact && (
         <>
           <div style={{ fontSize: 12, letterSpacing: '0.36em', fontWeight: 600, color: 'var(--text-dark-secondary)', marginBottom: 6 }}>
-            CETTE SEMAINE
+            NOTRE CARTE
           </div>
-          <h2 className="serif" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', marginBottom: 24 }}>Menu du jour</h2>
+          <h2 className="serif" style={{ fontSize: 'clamp(1.6rem, 3.5vw, 2.4rem)', marginBottom: 24 }}>Nos spécialités</h2>
         </>
       )}
 
       <div className="pop-carousel__stage">
-        <button className="pop-carousel__nav" onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)} aria-label="Précédent">‹</button>
+        {totalPages > 1 && (
+          <button className="pop-carousel__nav" onClick={() => setPage((p) => (p - 1 + totalPages) % totalPages)} aria-label="Précédent">‹</button>
+        )}
 
-        <div className="pop-carousel__grid">
+        <div className="pop-carousel__grid" data-count={Math.min(visible.length, 4)}>
           <AnimatePresence mode="popLayout">
             {visible.map((it) => (
               <motion.div
@@ -75,12 +52,6 @@ export default function PopularCarousel({ items, compact = false }) {
                 transition={{ duration: 0.35 }}
                 className="pop-carousel__card"
               >
-                {it.day && (
-                  <div className="pop-carousel__day">
-                    <span className="pop-carousel__dayName">{it.day.dayName}</span>
-                    <span className="pop-carousel__dayDate">{it.day.dateLabel}</span>
-                  </div>
-                )}
                 <div className="pop-carousel__imgWrap">
                   <img src={it.image} alt={it.name} className="pop-carousel__img" />
                 </div>
@@ -93,10 +64,12 @@ export default function PopularCarousel({ items, compact = false }) {
           </AnimatePresence>
         </div>
 
-        <button className="pop-carousel__nav" onClick={() => setPage((p) => (p + 1) % totalPages)} aria-label="Suivant">›</button>
+        {totalPages > 1 && (
+          <button className="pop-carousel__nav" onClick={() => setPage((p) => (p + 1) % totalPages)} aria-label="Suivant">›</button>
+        )}
       </div>
 
-      {!compact && (
+      {!compact && totalPages > 1 && (
         <div className="pop-carousel__dots">
           {Array.from({ length: totalPages }).map((_, i) => (
             <button

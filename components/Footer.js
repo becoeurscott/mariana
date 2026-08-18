@@ -6,11 +6,11 @@ export default function Footer() {
       <div className="ethnic-top-bar" style={{ opacity: 0.5 }} />
       <div className="footer__inner">
         <div className="footer__col footer__brandCol">
-          <h3 className="serif footer__brand">Huff &amp; Puff</h3>
+          <h3 className="serif footer__brand">MariAnafood</h3>
           <p className="footer__small">
             123 rue du Signal, 75011 Paris<br />
-            bonjour@huffandpuff.co<br />
-            www.huffandpuff.co
+            bonjour@marianafood.co<br />
+            www.marianafood.co
           </p>
         </div>
 
@@ -46,7 +46,7 @@ export default function Footer() {
       </div>
 
       <div className="footer__copy">
-        <span>© 2026 Huff &amp; Puff Épicerie.</span>
+        <span>© 2026 MariAnafood Épicerie.</span>
         <span>Fait main &amp; savouré</span>
       </div>
     </footer>

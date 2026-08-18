@@ -9,9 +9,9 @@ export const dynamic = 'force-dynamic';
 export async function generateMetadata({ params }) {
   const { id } = await params;
   const detail = await getDishDetail(id).catch(() => null);
-  if (!detail) return { title: 'Plat introuvable — Huff & Puff' };
+  if (!detail) return { title: 'Plat introuvable — MariAnafood' };
   return {
-    title: `${detail.item.name} — Huff & Puff`,
+    title: `${detail.item.name} — MariAnafood`,
     description: detail.item.description || undefined,
   };
 }
@@ -60,7 +60,7 @@ export default async function DishPage({ params }) {
         {related.length > 0 && (
           <section className="dish-page__related">
             <h2 className="serif dish-page__relatedTitle">Vous aimerez aussi</h2>
-            <div className="dish-page__relatedGrid">
+            <div className="dish-page__relatedGrid" data-count={Math.min(related.length, 4)}>
               {related.map((r) => (
                 <Link key={r.id} href={`/menu/${r.id}`} className="dish-page__relatedCard">
                   {r.image && <img src={r.image} alt={r.name} className="dish-page__relatedImg" />}

@@ -10,12 +10,12 @@ import PopularCarousel from './PopularCarousel';
  *   │  HERO TEXT + CTAs      │   SIGNATURE BOWL        │
  *   │  reviews + rating      │   (circular photo)      │
  *   ├────────────────────────┴──────────────────────────┤
- *   │  Popular strip (4 dishes)  │  Curated + Recipes  │
+ *   │  Menu du jour strip (real dishes, full width)     │
  *   └──────────────────────────────────────────────────┘
  *
  * Below 1024px it stacks into a normal scrolling flow with reveal animations.
  */
-export default function OneScreenHome() {
+export default function OneScreenHome({ dishes = [] }) {
   return (
     <section className="one-screen">
       <EthnicSides />
@@ -61,8 +61,8 @@ export default function OneScreenHome() {
           className="one-screen__bowl"
         >
           <img
-            src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=85"
-            alt="Plat signature"
+            src="https://images.unsplash.com/photo-1574894709920-11b28e7367e3?auto=format&fit=crop&w=900&q=85"
+            alt="Notre lasagne maison"
           />
         </motion.div>
 
@@ -74,10 +74,10 @@ export default function OneScreenHome() {
           className="one-screen__popular"
         >
           <div className="one-screen__stripHead">
-            <span className="one-screen__stripEyebrow">CETTE SEMAINE</span>
-            <h3 className="serif one-screen__stripTitle">Menu du jour</h3>
+            <span className="one-screen__stripEyebrow">NOTRE CARTE</span>
+            <h3 className="serif one-screen__stripTitle">Nos spécialités</h3>
           </div>
-          <PopularCarousel compact />
+          <PopularCarousel compact items={dishes} />
         </motion.div>
       </div>
     </section>

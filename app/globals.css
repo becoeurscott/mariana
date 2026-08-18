@@ -1943,3 +1943,68 @@ h1 { word-break: break-word; }
 
 /* Make menu-card name/image clickable link areas obvious but keep card styling */
 .menu-card__link { display: block; color: inherit; }
+
+/* ============================================================
+   SMALL MENUS — a 2-dish restaurant should look intentional,
+   not like a 3-column grid with holes in it.
+   ============================================================ */
+
+/* Menu grid: constrain and centre when there are only 1–2 dishes so the
+   cards read as a deliberate showcase instead of a half-empty row. */
+.menu-grid[data-count="1"] {
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 420px;
+}
+.menu-grid[data-count="2"] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 760px;
+}
+/* With few dishes the cards get more room, so let the imagery breathe. */
+.menu-grid[data-count="1"] .menu-card__img-wrap,
+.menu-grid[data-count="2"] .menu-card__img-wrap {
+  aspect-ratio: 3 / 2;
+}
+.menu-grid[data-count="1"] .menu-card__name,
+.menu-grid[data-count="2"] .menu-card__name {
+  font-size: 17px;
+}
+.menu-grid[data-count="1"] .menu-card__desc,
+.menu-grid[data-count="2"] .menu-card__desc {
+  font-size: 13px;
+  -webkit-line-clamp: 3;
+}
+@media (max-width: 640px) {
+  /* On phones a single column always reads better than two cramped ones. */
+  .menu-grid[data-count="1"],
+  .menu-grid[data-count="2"] {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 100%;
+  }
+}
+
+/* Menu du jour strip: same idea — widen the cards instead of leaving
+   two thirds of the row empty. */
+@media (min-width: 901px) {
+  .pop-carousel__grid[data-count="1"] { grid-template-columns: minmax(0, 340px); justify-content: center; }
+  .pop-carousel__grid[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 640px; margin: 0 auto; }
+  .pop-carousel__grid[data-count="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .pop-carousel__grid[data-count="1"] .pop-carousel__imgWrap,
+  .pop-carousel__grid[data-count="2"] .pop-carousel__imgWrap { aspect-ratio: 4 / 3; }
+  .pop-carousel__grid[data-count="1"] .pop-carousel__name,
+  .pop-carousel__grid[data-count="2"] .pop-carousel__name { font-size: 15px; }
+}
+/* On mobile the strip stays a swipeable row, but with only a couple of
+   cards there is nothing to swipe — let them share the width instead. */
+@media (max-width: 900px) {
+  .pop-carousel__grid[data-count="1"] .pop-carousel__card { flex: 1 1 100%; max-width: 100%; }
+  .pop-carousel__grid[data-count="2"] .pop-carousel__card { flex: 1 1 calc(50% - 6px); max-width: none; }
+}
+
+/* Related dishes on a dish page: with a single suggestion, don't stretch a
+   4-column grid across the page for one card. */
+.dish-page__relatedGrid[data-count="1"] { grid-template-columns: minmax(0, 220px); }
+.dish-page__relatedGrid[data-count="2"] { grid-template-columns: repeat(2, minmax(0, 220px)); }
+
+/* Menu page: when the sidebar summary is the widest thing on screen the
+   layout looks lopsided with a tiny menu — cap the main column instead. */
+.menu-layout__main { min-width: 0; }

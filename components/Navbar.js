@@ -19,14 +19,12 @@ export default function Navbar() {
     <header style={styles.wrap}>
       <div className="container" style={styles.inner}>
         <Link href="/" style={styles.brand}>
+          {/* The logo artwork is a full lockup; crop to the gold monogram so it
+              still reads at navbar size, with the wordmark set alongside it. */}
           <span style={styles.logoMark}>
-            <svg viewBox="0 0 32 32" width="24" height="24">
-              <circle cx="16" cy="16" r="15" fill="none" stroke="#C88339" strokeWidth="1.5" />
-              <path d="M10 20 Q 16 8, 22 20" stroke="#13382C" strokeWidth="1.8" fill="none" strokeLinecap="round" />
-              <circle cx="16" cy="14" r="2" fill="#C88339" />
-            </svg>
+            <img src="/logo.jpeg" alt="" style={styles.logoImg} />
           </span>
-          <span className="serif" style={styles.brandName}>Huff &amp; Puff</span>
+          <span className="serif" style={styles.brandName}>MariAnafood</span>
         </Link>
 
         <nav style={styles.nav} className="hide-mobile">
@@ -97,7 +95,18 @@ const styles = {
     gap: 24,
   },
   brand: { display: 'flex', alignItems: 'center', gap: 10 },
-  logoMark: { display: 'inline-grid', placeItems: 'center' },
+  logoMark: {
+    display: 'inline-grid', placeItems: 'center',
+    width: 40, height: 40, borderRadius: 10,
+    overflow: 'hidden', flexShrink: 0,
+    border: '1px solid var(--border-gold)',
+  },
+  logoImg: {
+    width: '100%', height: '100%',
+    objectFit: 'cover',
+    objectPosition: 'center 33%',   /* focus the MAF monogram */
+    transform: 'scale(1.55)',        /* crop out the surrounding paper */
+  },
   brandName: { fontSize: 22, color: 'var(--text-dark)', fontWeight: 600 },
   nav: { display: 'flex', gap: 30 },
   link: { fontSize: 14, fontWeight: 500, color: 'var(--text-dark)' },

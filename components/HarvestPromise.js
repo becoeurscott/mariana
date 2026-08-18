@@ -2,7 +2,7 @@ export default function HarvestPromise() {
   return (
     <section className="harvest">
       <div className="container">
-        <div className="harvest__eyebrow">Huff &amp; Puff Épicerie</div>
+        <div className="harvest__eyebrow">MariAnafood Épicerie</div>
         <h2 className="serif harvest__title">LA PROMESSE DE LA RÉCOLTE</h2>
         <p className="harvest__lead">
           Une expérience d’épicerie artisanale, avec des trésors de saison mis en conserve

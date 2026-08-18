@@ -25,23 +25,25 @@ export default function MenuGrid({ categories }) {
 
   return (
     <div>
-      {/* Category Filter Bar — pipe separated */}
-      <nav className="menu-filter-bar">
-        {catNames.map((c, i) => (
-          <span key={c} className="menu-filter-bar__item">
-            <button
-              onClick={() => setActive(c)}
-              className={`menu-filter-btn${active === c ? ' menu-filter-btn--active' : ''}`}
-            >
-              {c.toUpperCase()}
-            </button>
-            {i < catNames.length - 1 && <span className="menu-filter-pipe">|</span>}
-          </span>
-        ))}
-      </nav>
+      {/* Category filter — only worth showing once there are several categories */}
+      {categories.length > 1 && (
+        <nav className="menu-filter-bar">
+          {catNames.map((c, i) => (
+            <span key={c} className="menu-filter-bar__item">
+              <button
+                onClick={() => setActive(c)}
+                className={`menu-filter-btn${active === c ? ' menu-filter-btn--active' : ''}`}
+              >
+                {c.toUpperCase()}
+              </button>
+              {i < catNames.length - 1 && <span className="menu-filter-pipe">|</span>}
+            </span>
+          ))}
+        </nav>
+      )}
 
       {/* Menu Grid */}
-      <div className="menu-grid">
+      <div className="menu-grid" data-count={Math.min(items.length, 4)}>
         <AnimatePresence mode="popLayout">
           {items.map((it, i) => (
             <motion.article

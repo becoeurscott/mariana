@@ -3,7 +3,7 @@ import SiteChrome from '@/components/SiteChrome';
 import { CartProvider } from '@/context/CartContext';
 
 export const metadata = {
-  title: 'Huff & Puff — Ce n’est pas juste un repas, c’est une expérience.',
+  title: 'MariAnafood — Ce n’est pas juste un repas, c’est une expérience.',
   description:
     'Cuisine gastronomique éditoriale, menus de saison de la ferme à la table, coffrets dégustation et livraison le jour même.',
 };

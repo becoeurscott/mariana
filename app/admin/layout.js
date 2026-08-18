@@ -2,7 +2,7 @@ import Link from 'next/link';
 import AdminNav from '@/components/admin/AdminNav';
 import '@/app/admin/admin.css';
 
-export const metadata = { title: 'Admin — Huff & Puff' };
+export const metadata = { title: 'Admin — MariAnafood' };
 
 export default function AdminLayout({ children }) {
   return (
@@ -11,7 +11,7 @@ export default function AdminLayout({ children }) {
         <Link href="/admin" className="admin-brand">
           <span className="admin-brand__mark">◈</span>
           <span>
-            <div className="admin-brand__name">Huff &amp; Puff</div>
+            <div className="admin-brand__name">MariAnafood</div>
             <div className="admin-brand__role">Console admin</div>
           </span>
         </Link>
