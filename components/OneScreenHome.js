@@ -31,8 +31,8 @@ export default function OneScreenHome() {
           className="one-screen__hero"
         >
           <h1 className="serif one-screen__title">
-            Ce n&apos;est pas juste un <em>Repas,</em><br />
-            c&apos;est une <em>Expérience.</em>
+            Ce n&apos;est pas juste un <em className="one-screen__accent">Repas,</em><br />
+            c&apos;est une <em className="one-screen__accent">Expérience.</em>
           </h1>
           <p className="one-screen__lead">
             Une cuisine gastronomique éditoriale, sourcée éthiquement,
