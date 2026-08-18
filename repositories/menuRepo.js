@@ -33,6 +33,26 @@ export function findItemsByIds(ids) {
   return prisma.menuItem.findMany({ where: { id: { in: ids } } });
 }
 
+/** Single item with full detail for the dish page — category name + option groups. */
+export function findItemDetail(id) {
+  return prisma.menuItem.findUnique({
+    where: { id },
+    include: {
+      category: { select: { id: true, name: true } },
+      optionGroups: { include: { options: true } },
+    },
+  });
+}
+
+/** Other available items from the same category, excluding this one. */
+export function findRelatedItems({ restaurantId, categoryId, excludeId, take = 4 }) {
+  return prisma.menuItem.findMany({
+    where: { restaurantId, categoryId, available: true, id: { not: excludeId } },
+    orderBy: { name: 'asc' },
+    take,
+  });
+}
+
 export function createItem(data)          { return prisma.menuItem.create({ data }); }
 export function updateItem(id, data)      { return prisma.menuItem.update({ where: { id }, data }); }
 export function deleteItem(id)            { return prisma.menuItem.delete({ where: { id } }); }

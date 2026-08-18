@@ -12,6 +12,21 @@ export async function getAdminMenu() {
   return { categories: await repo.listAllForAdmin(rid) };
 }
 
+/** Single dish + a handful of related dishes from the same category, for /menu/[id]. */
+export async function getDishDetail(id) {
+  const rid = await getActiveRestaurantId();
+  const item = await repo.findItemDetail(id);
+  if (!item || item.restaurantId !== rid || !item.available) return null;
+
+  const related = await repo.findRelatedItems({
+    restaurantId: rid,
+    categoryId: item.categoryId,
+    excludeId: item.id,
+  });
+
+  return { item, related };
+}
+
 export async function createMenuItem(input) {
   const rid = await getActiveRestaurantId();
   const data = parseOrThrow(menuItemUpsert, input);

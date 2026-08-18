@@ -1,5 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useCart } from '@/context/CartContext';
 import DishModal from './DishModal';
@@ -54,16 +55,20 @@ export default function MenuGrid({ categories }) {
               whileHover={{ y: -4 }}
               className="menu-card"
             >
-              {/* Circular image */}
+              {/* Circular image — links to the dish detail page */}
               {it.image && (
-                <div className="menu-card__img-wrap">
-                  <img src={it.image} alt={it.name} className="menu-card__img" />
-                </div>
+                <Link href={`/menu/${it.id}`} className="menu-card__link">
+                  <div className="menu-card__img-wrap">
+                    <img src={it.image} alt={it.name} className="menu-card__img" />
+                  </div>
+                </Link>
               )}
 
               {/* Card body */}
               <div className="menu-card__body">
-                <h3 className="menu-card__name">{it.name}</h3>
+                <Link href={`/menu/${it.id}`} className="menu-card__link">
+                  <h3 className="menu-card__name">{it.name}</h3>
+                </Link>
                 <p className="menu-card__desc">{it.description}</p>
 
                 <div className="menu-card__meta">
