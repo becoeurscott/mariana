@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { EthnicSides } from './EthnicPattern';
-import FloatingLeaves from './FloatingLeaves';
 import PopularCarousel from './PopularCarousel';
 
 /**
@@ -20,7 +19,6 @@ export default function OneScreenHome() {
   return (
     <section className="one-screen">
       <EthnicSides />
-      <FloatingLeaves count={4} />
 
       <div className="one-screen__grid">
         {/* HERO left */}
@@ -31,7 +29,7 @@ export default function OneScreenHome() {
           className="one-screen__hero"
         >
           <h1 className="serif one-screen__title">
-            Ce n&apos;est pas juste un <em className="one-screen__accent">Repas,</em><br />
+            Ce n&apos;est pas juste un <em className="one-screen__accent">Repas</em><br />
             c&apos;est une <em className="one-screen__accent">Expérience.</em>
           </h1>
           <p className="one-screen__lead">
@@ -40,7 +38,7 @@ export default function OneScreenHome() {
           </p>
           <div className="one-screen__ctas">
             <Link href="/menu" className="btn btn-primary">Commander</Link>
-            <Link href="/contact" className="btn btn-outline-gold">Contactez</Link>
+            <Link href="/contact" className="btn btn-outline-gold">Contacter</Link>
           </div>
           <div className="one-screen__reviews">
             <div className="one-screen__avatars">
@@ -80,37 +78,6 @@ export default function OneScreenHome() {
             <h3 className="serif one-screen__stripTitle">Menu du jour</h3>
           </div>
           <PopularCarousel compact />
-        </motion.div>
-
-        {/* Curated + recipes bottom-right */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.45 }}
-          className="one-screen__side"
-        >
-          <Link href="#curated" className="one-screen__tile one-screen__tile--dark">
-            <div>
-              <div className="one-screen__tileEyebrow">COFFRET</div>
-              <div className="serif one-screen__tileTitle">Dégustation</div>
-              <div className="one-screen__tileMeta">Livré chaque mois →</div>
-            </div>
-            <img
-              src="https://images.unsplash.com/photo-1607083206869-4c7672e72a8a?auto=format&fit=crop&w=400&q=80"
-              alt="Coffret"
-            />
-          </Link>
-          <Link href="/menu" className="one-screen__tile one-screen__tile--cream">
-            <div>
-              <div className="one-screen__tileEyebrow">RECETTES</div>
-              <div className="serif one-screen__tileTitle">du Cœur</div>
-              <div className="one-screen__tileMeta">Voir le menu →</div>
-            </div>
-            <img
-              src="https://images.unsplash.com/photo-1587740908075-9e245311f26d?auto=format&fit=crop&w=400&q=80"
-              alt="Recette"
-            />
-          </Link>
         </motion.div>
       </div>
     </section>

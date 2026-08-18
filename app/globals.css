@@ -908,6 +908,10 @@ header { will-change: background, box-shadow; }
   letter-spacing: -0.02em;
   color: var(--text-dark);
   font-weight: 600;
+  /* Never break mid-word (was hyphenating "Repas" into "Re-/pas") */
+  hyphens: none;
+  overflow-wrap: normal;
+  word-break: normal;
 }
 .one-screen__title em { font-style: italic; font-weight: 500; }
 .one-screen__accent {
@@ -944,10 +948,10 @@ header { will-change: background, box-shadow; }
   box-shadow: 0 40px 60px rgba(19, 56, 44, 0.28);
 }
 
-/* --- Popular bottom left --- */
+/* --- Popular strip bottom (spans full width — side tiles removed) --- */
 .one-screen__popular {
   grid-row: 2 / 3;
-  grid-column: 1 / 2;
+  grid-column: 1 / -1;
   background: var(--bg-page-alt);
   border-radius: 20px;
   padding: 18px 20px;
@@ -962,32 +966,6 @@ header { will-change: background, box-shadow; }
   font-weight: 700;
 }
 .one-screen__stripTitle { font-size: 20px; color: var(--text-dark); }
-
-/* --- Side tiles bottom right --- */
-.one-screen__side {
-  grid-row: 2 / 3;
-  grid-column: 2 / 3;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
-}
-.one-screen__tile {
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 10px; padding: 14px 16px; border-radius: 18px;
-  border: 1px solid var(--border-cream);
-  overflow: hidden; position: relative;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-.one-screen__tile:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
-.one-screen__tile--dark { background: var(--bg-dark); color: var(--text-cream); }
-.one-screen__tile--cream { background: var(--bg-card); color: var(--text-dark); }
-.one-screen__tileEyebrow {
-  font-size: 10px; letter-spacing: 0.28em; font-weight: 700;
-  color: var(--primary-terracotta);
-}
-.one-screen__tileTitle { font-size: 22px; line-height: 1; margin: 4px 0 8px; }
-.one-screen__tileMeta { font-size: 11px; opacity: 0.75; }
-.one-screen__tile img {
-  width: 90px; height: 90px; object-fit: cover; border-radius: 12px; flex-shrink: 0;
-}
 
 /* On smaller screens: stack, scroll, no forced height */
 @media (max-width: 1023px) {
@@ -1005,8 +983,7 @@ header { will-change: background, box-shadow; }
   .one-screen__hero { padding: 0; }
   .one-screen__bowl { grid-row: auto; grid-column: auto; }
   .one-screen__bowl img { width: min(320px, 80%); }
-  .one-screen__popular, .one-screen__side { grid-row: auto; grid-column: auto; }
-  .one-screen__side { grid-template-columns: 1fr; }
+  .one-screen__popular { grid-row: auto; grid-column: auto; }
 }
 
 /* Extra tight desktop heights */
@@ -1318,9 +1295,6 @@ html.snap-scroll .snap-section { padding-top: 0; }
   .one-screen { padding: 90px 20px 30px; }
   .one-screen__title { font-size: clamp(2.6rem, 10vw, 3.6rem); }
   .one-screen__bowl img { width: min(280px, 78%); }
-  .one-screen__side { grid-template-columns: 1fr !important; gap: 10px; }
-  .one-screen__tile { padding: 14px; }
-  .one-screen__tile img { width: 72px; height: 72px; }
   .one-screen__popular { padding: 14px; }
   .one-screen__stripHead { flex-direction: column; align-items: flex-start; gap: 4px; }
   .one-screen__stripTitle { font-size: 18px; }
@@ -1335,8 +1309,7 @@ html.snap-scroll .snap-section { padding-top: 0; }
   .one-screen__grid > * { min-width: 0; max-width: 100%; }
 }
 @media (max-width: 900px) {
-  .one-screen__popular,
-  .one-screen__side { min-width: 0; max-width: 100%; overflow: hidden; }
+  .one-screen__popular { min-width: 0; max-width: 100%; overflow: hidden; }
   .pop-carousel { width: 100%; min-width: 0; }
   .pop-carousel__stage { min-width: 0; width: 100%; }
   .pop-carousel__grid { min-width: 0; width: 100%; }
@@ -1757,10 +1730,17 @@ html.snap-scroll .snap-section { padding-top: 0; }
 .curated,
 .recipes,
 .checkout,
-.checkout__container,
-.one-screen {
+.checkout__container {
   padding-left: max(var(--page-side), env(safe-area-inset-left)) !important;
   padding-right: max(var(--page-side), env(safe-area-inset-right)) !important;
+}
+
+/* .one-screen has the tribal-pattern columns (46px wide) painted at its
+   absolute left:0/right:0 edges — content needs extra clearance so text
+   never sits on top of the pattern, on any viewport. */
+.one-screen {
+  padding-left: max(calc(var(--page-side) + 46px), env(safe-area-inset-left)) !important;
+  padding-right: max(calc(var(--page-side) + 46px), env(safe-area-inset-right)) !important;
 }
 
 /* Menu page content body */
