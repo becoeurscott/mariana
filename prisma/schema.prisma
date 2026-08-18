@@ -18,7 +18,7 @@ model Restaurant {
   logoUrl       String?
   brandPrimary  String?  // hex
   brandDark     String?
-  currency      String   @default("EUR")
+  currency      String   @default("USD")
   taxRate       Float    @default(8.25)
   deliveryFee   Float    @default(4.99)
   minOrder      Float    @default(0)
@@ -188,7 +188,7 @@ model Payment {
   orderId               String   @unique
   stripePaymentIntentId String   @unique
   amount                Float
-  currency              String   @default("eur")
+  currency              String   @default("usd")
   status                String   @default("PENDING")
   receiptUrl            String?
   order                 Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)

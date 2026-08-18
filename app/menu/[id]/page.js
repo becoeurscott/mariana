@@ -45,7 +45,7 @@ export default async function DishPage({ params }) {
             <h1 className="serif dish-page__title">{item.name}</h1>
 
             <div className="dish-page__meta">
-              <span className="dish-page__price">{item.price.toFixed(2)} €</span>
+              <span className="dish-page__price">${item.price.toFixed(2)}</span>
               {item.dietary === 'Vegetarian' && <span className="chip veg">🌱 Végétarien</span>}
               {item.dietary === 'Gluten-Free' && <span className="chip gf">Sans gluten</span>}
               {item.dietary === 'Vegan' && <span className="chip veg">Vegan</span>}
@@ -66,7 +66,7 @@ export default async function DishPage({ params }) {
                   {r.image && <img src={r.image} alt={r.name} className="dish-page__relatedImg" />}
                   <div className="dish-page__relatedBody">
                     <div className="dish-page__relatedName">{r.name}</div>
-                    <div className="dish-page__relatedPrice">{r.price.toFixed(2)} €</div>
+                    <div className="dish-page__relatedPrice">${r.price.toFixed(2)}</div>
                   </div>
                 </Link>
               ))}

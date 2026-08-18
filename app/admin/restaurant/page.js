@@ -60,8 +60,8 @@ export default function AdminRestaurantPage() {
       <div className="admin-card">
         <h2>Tarifs &amp; livraison</h2>
         <div className="admin-form">
-          <div className="field"><label>Devise</label><input value={r.currency || 'EUR'} onChange={(e) => change('currency', e.target.value.toUpperCase())} maxLength={3} /></div>
-          <div className="field"><label>TVA (%)</label><input type="number" step="0.01" value={r.taxRate ?? 0} onChange={(e) => change('taxRate', e.target.value)} /></div>
+          <div className="field"><label>Devise</label><input value={r.currency || 'USD'} onChange={(e) => change('currency', e.target.value.toUpperCase())} maxLength={3} /></div>
+          <div className="field"><label>Taxe (%)</label><input type="number" step="0.01" value={r.taxRate ?? 0} onChange={(e) => change('taxRate', e.target.value)} /></div>
           <div className="field"><label>Frais de livraison</label><input type="number" step="0.01" value={r.deliveryFee ?? 0} onChange={(e) => change('deliveryFee', e.target.value)} /></div>
           <div className="field"><label>Commande minimum</label><input type="number" step="0.01" value={r.minOrder ?? 0} onChange={(e) => change('minOrder', e.target.value)} /></div>
         </div>

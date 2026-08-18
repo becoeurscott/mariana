@@ -86,7 +86,7 @@ export default function AdminOrdersPage() {
                     {STATUSES.map((s) => <option key={s} value={s}>{STATUS_LABELS[s]}</option>)}
                   </select>
                 </td>
-                <td style={{ textAlign: 'right', fontWeight: 700 }}>{o.total.toFixed(2)} €</td>
+                <td style={{ textAlign: 'right', fontWeight: 700 }}>${o.total.toFixed(2)}</td>
                 <td style={{ fontSize: 12, color: 'var(--text-dark-secondary)' }}>{new Date(o.createdAt).toLocaleString('fr-FR')}</td>
                 <td><Link href={`/track/${o.id}`} className="btn btn-outline-gold btn-sm">Voir</Link></td>
               </tr>

@@ -148,7 +148,7 @@ export default function CheckoutPage() {
                 >Autre</button>
                 {tipPreset === 'CUSTOM' && (
                   <input
-                    type="number" step="0.01" inputMode="decimal" placeholder="€"
+                    type="number" step="0.01" inputMode="decimal" placeholder="$"
                     value={customTip}
                     onChange={(e) => setCustomTip(e.target.value)}
                     className="checkout__tipInput"
@@ -180,19 +180,19 @@ export default function CheckoutPage() {
                 {items.map((l) => (
                   <div key={l.key} className="checkout__sumRow">
                     <span className="checkout__sumName">{l.quantity}× {l.name}</span>
-                    <span>{lineTotal(l).toFixed(2)} €</span>
+                    <span>${lineTotal(l).toFixed(2)}</span>
                   </div>
                 ))}
                 {items.length === 0 && <div className="checkout__empty">Panier vide.</div>}
               </div>
 
               <div className="checkout__divider" />
-              <div className="checkout__sumRow"><span>Sous-total</span><span>{subtotal.toFixed(2)} €</span></div>
-              <div className="checkout__sumRow"><span>TVA (8,25 %)</span><span>{tax.toFixed(2)} €</span></div>
-              <div className="checkout__sumRow"><span>Pourboire</span><span>{tipAmount.toFixed(2)} €</span></div>
-              {type === 'DELIVERY' && <div className="checkout__sumRow"><span>Livraison</span><span>{deliveryFee.toFixed(2)} €</span></div>}
+              <div className="checkout__sumRow"><span>Sous-total</span><span>${subtotal.toFixed(2)}</span></div>
+              <div className="checkout__sumRow"><span>Taxe (8,25 %)</span><span>${tax.toFixed(2)}</span></div>
+              <div className="checkout__sumRow"><span>Pourboire</span><span>${tipAmount.toFixed(2)}</span></div>
+              {type === 'DELIVERY' && <div className="checkout__sumRow"><span>Livraison</span><span>${deliveryFee.toFixed(2)}</span></div>}
               <div className="checkout__divider" />
-              <div className="checkout__total"><span>Total</span><span>{total.toFixed(2)} €</span></div>
+              <div className="checkout__total"><span>Total</span><span>${total.toFixed(2)}</span></div>
 
               {err && <div className="checkout__err">{err}</div>}
 

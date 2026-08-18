@@ -11,7 +11,7 @@ export default function MobileCartCTA() {
         <span className="mobile-cart-cta__badge">{itemCount}</span>
         {' '}Voir la commande
       </span>
-      <span>{subtotal.toFixed(2)} €</span>
+      <span>${subtotal.toFixed(2)}</span>
     </button>
   );
 }

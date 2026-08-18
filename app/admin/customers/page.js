@@ -34,7 +34,7 @@ export default async function AdminCustomersPage() {
               <tr key={r.customerEmail}>
                 <td>{r.customerEmail}</td>
                 <td style={{ textAlign: 'right' }}>{r._count._all}</td>
-                <td style={{ textAlign: 'right', fontWeight: 700 }}>{(r._sum.total || 0).toFixed(2)} €</td>
+                <td style={{ textAlign: 'right', fontWeight: 700 }}>${(r._sum.total || 0).toFixed(2)}</td>
               </tr>
             ))}
           </tbody>

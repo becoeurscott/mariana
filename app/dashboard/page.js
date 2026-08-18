@@ -69,7 +69,7 @@ export default function Dashboard() {
               <div style={{ fontWeight: 700 }}>{o.orderNumber}</div>
               <div style={{ fontSize: 12, color: 'var(--text-dark-secondary)' }}>{new Date(o.createdAt).toLocaleString('fr-FR')} · {o.type === 'DELIVERY' ? 'Livraison' : 'À emporter'} · {o.customerName || 'Invité'}</div>
             </div>
-            <div style={{ minWidth: 90, textAlign: 'right', fontWeight: 700 }}>{o.total.toFixed(2)} €</div>
+            <div style={{ minWidth: 90, textAlign: 'right', fontWeight: 700 }}>${o.total.toFixed(2)}</div>
             <select value={o.status} onChange={(e) => setStatus(o.id, e.target.value)} style={styles.select}>
               {STATUSES.map((s) => <option key={s} value={s}>{STATUS_LABELS[s]}</option>)}
             </select>

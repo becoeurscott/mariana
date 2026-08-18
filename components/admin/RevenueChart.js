@@ -17,7 +17,7 @@ export default function RevenueChart({ data }) {
           <g key={r}>
             <line x1={pad.l} x2={w - pad.r} y1={y} y2={y} stroke="#e6ddc9" strokeWidth="1" />
             <text x={pad.l - 6} y={y + 3} textAnchor="end" fontSize="10" fill="#5C5446">
-              {(max * r).toFixed(0)}€
+              ${(max * r).toFixed(0)}
             </text>
           </g>
         );
@@ -37,7 +37,7 @@ export default function RevenueChart({ data }) {
               transition={{ duration: 0.6, delay: i * 0.03, ease: [0.22, 1, 0.36, 1] }}
               x={x} width={barW} rx={4} fill="#C88339"
             >
-              <title>{`${d.label} — ${d.revenue.toFixed(2)}€ (${d.count} cmd.)`}</title>
+              <title>{`${d.label} — $${d.revenue.toFixed(2)} (${d.count} cmd.)`}</title>
             </motion.rect>
             <text x={x + barW / 2} y={h - pad.b + 14} textAnchor="middle" fontSize="10" fill="#5C5446">
               {d.label.split(' ')[0]}

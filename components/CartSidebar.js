@@ -57,7 +57,7 @@ export default function CartSidebar() {
                           <span>{l.quantity}</span>
                           <button onClick={() => updateQty(l.key, +1)}>+</button>
                         </div>
-                        <div style={styles.price}>{lineTotal(l).toFixed(2)} €</div>
+                        <div style={styles.price}>${lineTotal(l).toFixed(2)}</div>
                       </div>
                     </div>
                     <button onClick={() => removeItem(l.key)} style={styles.remove} aria-label="Retirer">✕</button>
@@ -69,7 +69,7 @@ export default function CartSidebar() {
             <div style={styles.foot}>
               <div style={styles.subtotal}>
                 <span>Sous-total</span>
-                <span>{subtotal.toFixed(2)} €</span>
+                <span>${subtotal.toFixed(2)}</span>
               </div>
               <Link
                 href="/checkout"

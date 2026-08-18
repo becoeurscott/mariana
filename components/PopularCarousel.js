@@ -3,10 +3,10 @@ import { useEffect, useMemo, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const DEMO = [
-  { id: 1, name: 'Pappardelle al Ragù',   image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=700&q=80', price: 26 },
-  { id: 2, name: 'Entrée rôtie',           image: 'https://images.unsplash.com/photo-1476124369491-e7addf5db371?auto=format&fit=crop&w=700&q=80', price: 18 },
-  { id: 3, name: 'Pappardelle verde',      image: 'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80', price: 20 },
-  { id: 4, name: 'Ravioli aux herbes',     image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80', price: 28 },
+  { id: 1, name: 'Jollof Rice au poulet', image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=700&q=80', price: 24 },
+  { id: 2, name: 'Poulet Yassa',          image: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=700&q=80', price: 23 },
+  { id: 3, name: 'Mafé de bœuf',          image: 'https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80', price: 25 },
+  { id: 4, name: 'Suya de bœuf',          image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=700&q=80', price: 22 },
 ];
 
 const DAY_NAMES  = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
@@ -86,7 +86,7 @@ export default function PopularCarousel({ items, compact = false }) {
                 </div>
                 <div className="pop-carousel__body">
                   <div className="pop-carousel__name">{it.name}</div>
-                  <div className="pop-carousel__tag">{it.price.toFixed(2)} €</div>
+                  <div className="pop-carousel__tag">${it.price.toFixed(2)}</div>
                 </div>
               </motion.div>
             ))}

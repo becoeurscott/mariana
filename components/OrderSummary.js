@@ -26,7 +26,7 @@ export default function OrderSummary() {
                     <span>{l.quantity}</span>
                     <button onClick={() => updateQty(l.key, +1)}>+</button>
                   </div>
-                  <div className="order-summary__line-price">{lineTotal(l).toFixed(2)} €</div>
+                  <div className="order-summary__line-price">${lineTotal(l).toFixed(2)}</div>
                 </div>
               </div>
             </div>
@@ -37,7 +37,7 @@ export default function OrderSummary() {
       <div className="order-summary__foot">
         <div className="order-summary__subtotal">
           <span>Sous-total</span>
-          <span>{subtotal.toFixed(2)} €</span>
+          <span>${subtotal.toFixed(2)}</span>
         </div>
         <Link
           href="/checkout"

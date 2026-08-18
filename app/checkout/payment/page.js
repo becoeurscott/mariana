@@ -76,7 +76,7 @@ function PaymentPage() {
             </div>
             <div style={{ textAlign: 'right' }}>
               <div style={{ fontSize: 12, opacity: 0.7 }}>Montant</div>
-              <div style={{ fontWeight: 700, fontSize: 22 }}>{order.total?.toFixed(2)} €</div>
+              <div style={{ fontWeight: 700, fontSize: 22 }}>${order.total?.toFixed(2)}</div>
             </div>
           </div>
         </div>
@@ -96,7 +96,7 @@ function PaymentPage() {
         {err && <div style={{ color: '#b91c1c', fontSize: 13 }}>{err}</div>}
 
         <button disabled={processing} className="btn btn-primary" style={{ width: '100%' }}>
-          {processing ? <span className="spinner" /> : `Payer ${order?.total?.toFixed(2) ?? ''} €`}
+          {processing ? <span className="spinner" /> : `Payer $${order?.total?.toFixed(2) ?? ''}`}
         </button>
       </form>
     </motion.main>

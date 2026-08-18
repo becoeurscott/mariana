@@ -8,7 +8,7 @@ export async function createIntentForOrder(orderId) {
 
   const intent = await createPaymentIntent({
     amountCents: Math.round(order.total * 100),
-    currency: 'eur',
+    currency: 'usd',
     metadata: { orderId: order.id, orderNumber: order.orderNumber },
   });
 
@@ -20,7 +20,7 @@ export async function createIntentForOrder(orderId) {
       stripePaymentIntentId: intent.id,
       amount: order.total,
       status: 'PENDING',
-      currency: 'eur',
+      currency: 'usd',
     },
   });
 

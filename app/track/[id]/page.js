@@ -78,15 +78,15 @@ export default function TrackPage({ params }) {
         {order.items.map((it) => (
           <div key={it.id} style={styles.line}>
             <span>{it.quantity}× {it.itemName}</span>
-            <span>{(it.itemPrice * it.quantity).toFixed(2)} €</span>
+            <span>${(it.itemPrice * it.quantity).toFixed(2)}</span>
           </div>
         ))}
         <div style={styles.divider} />
-        <div style={styles.line}><span>Sous-total</span><span>{order.subtotal.toFixed(2)} €</span></div>
-        <div style={styles.line}><span>TVA</span><span>{order.taxAmount.toFixed(2)} €</span></div>
-        <div style={styles.line}><span>Pourboire</span><span>{order.tipAmount.toFixed(2)} €</span></div>
-        {order.deliveryFee > 0 && <div style={styles.line}><span>Livraison</span><span>{order.deliveryFee.toFixed(2)} €</span></div>}
-        <div style={{ ...styles.line, fontWeight: 700, fontSize: 18 }}><span>Total</span><span>{order.total.toFixed(2)} €</span></div>
+        <div style={styles.line}><span>Sous-total</span><span>${order.subtotal.toFixed(2)}</span></div>
+        <div style={styles.line}><span>Taxe</span><span>${order.taxAmount.toFixed(2)}</span></div>
+        <div style={styles.line}><span>Pourboire</span><span>${order.tipAmount.toFixed(2)}</span></div>
+        {order.deliveryFee > 0 && <div style={styles.line}><span>Livraison</span><span>${order.deliveryFee.toFixed(2)}</span></div>}
+        <div style={{ ...styles.line, fontWeight: 700, fontSize: 18 }}><span>Total</span><span>${order.total.toFixed(2)}</span></div>
       </section>
 
       {order.deliveryInfo && (

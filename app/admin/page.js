@@ -28,7 +28,7 @@ export default async function AdminHome() {
       <div className="admin-kpis">
         <div className="admin-kpi admin-kpi--accent">
           <div className="admin-kpi__label">Chiffre d&apos;affaires</div>
-          <div className="admin-kpi__value">{k.totalRevenue.toFixed(2)} €</div>
+          <div className="admin-kpi__value">${k.totalRevenue.toFixed(2)}</div>
           <div className="admin-kpi__hint">Sur les {Math.min(500, k.orderCount)} dernières commandes</div>
         </div>
         <div className="admin-kpi">
@@ -38,13 +38,13 @@ export default async function AdminHome() {
         </div>
         <div className="admin-kpi">
           <div className="admin-kpi__label">Panier moyen</div>
-          <div className="admin-kpi__value">{k.avgOrderValue.toFixed(2)} €</div>
-          <div className="admin-kpi__hint">TVA + livraison inclus</div>
+          <div className="admin-kpi__value">${k.avgOrderValue.toFixed(2)}</div>
+          <div className="admin-kpi__hint">Taxe + livraison inclus</div>
         </div>
         <div className="admin-kpi">
-          <div className="admin-kpi__label">TVA appliquée</div>
+          <div className="admin-kpi__label">Taxe appliquée</div>
           <div className="admin-kpi__value">{restaurant.taxRate}%</div>
-          <div className="admin-kpi__hint">Livraison {restaurant.deliveryFee.toFixed(2)} €</div>
+          <div className="admin-kpi__hint">Livraison ${restaurant.deliveryFee.toFixed(2)}</div>
         </div>
       </div>
 

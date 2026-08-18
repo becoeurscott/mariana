@@ -84,7 +84,7 @@ export default function DishModal({ item, onClose, onAdd }) {
               className="btn btn-primary"
               style={{ flex: 1, opacity: missing ? 0.5 : 1 }}
             >
-              Ajouter — {total.toFixed(2)} €
+              Ajouter — ${total.toFixed(2)}
             </button>
           </div>
         </div>

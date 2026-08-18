@@ -58,7 +58,7 @@ export default function DishDetailActions({ item }) {
                     onChange={() => toggle(g, o)}
                   />
                   <span className="dish-actions__optName">{o.name}</span>
-                  {o.price ? <span>+{o.price.toFixed(2)} €</span> : null}
+                  {o.price ? <span>+${o.price.toFixed(2)}</span> : null}
                 </label>
               );
             })}
@@ -83,7 +83,7 @@ export default function DishDetailActions({ item }) {
           className="btn btn-primary dish-actions__addBtn"
           style={{ opacity: missing ? 0.5 : 1 }}
         >
-          {added ? 'Ajouté ✓' : `Ajouter — ${total.toFixed(2)} €`}
+          {added ? 'Ajouté ✓' : `Ajouter — $${total.toFixed(2)}`}
         </button>
       </div>
 

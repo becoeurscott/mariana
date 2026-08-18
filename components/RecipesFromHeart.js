@@ -1,18 +1,18 @@
 const RECIPES = [
   {
-    title: 'Ravioli à la truffe',
-    body: 'Pliez vos raviolis à la main — les plus imparfaits sont toujours les meilleurs.',
-    image: 'https://images.unsplash.com/photo-1587740908075-9e245311f26d?auto=format&fit=crop&w=800&q=85',
+    title: 'Le secret du Jollof',
+    body: 'Laissez le riz accrocher légèrement au fond — c’est là que naît le goût fumé.',
+    image: 'https://images.unsplash.com/photo-1604329760661-e71dc83f8f26?auto=format&fit=crop&w=800&q=85',
   },
   {
-    title: 'Pappardelle aux légumes',
-    body: 'Grillez les légumes chaud & vite, assaisonnez doux & lentement — la règle d’or.',
-    image: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?auto=format&fit=crop&w=800&q=85',
+    title: 'Suya & épices yaji',
+    body: 'Torréfiez les arachides avant de les moudre : la différence est immédiate.',
+    image: 'https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?auto=format&fit=crop&w=800&q=85',
   },
   {
     title: 'Masterclass & rencontres',
     body: 'Tables du chef réservées à l’avance, ateliers de saison et sessions Q&R.',
-    image: 'https://images.unsplash.com/photo-1610614819513-58e34989848b?auto=format&fit=crop&w=800&q=85',
+    image: 'https://images.unsplash.com/photo-1543339308-43e59d6b73a6?auto=format&fit=crop&w=800&q=85',
   },
 ];
 

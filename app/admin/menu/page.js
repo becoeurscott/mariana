@@ -89,7 +89,7 @@ export default function AdminMenuPage() {
                   </div>
                   <div style={{ fontSize: 12, color: 'var(--text-dark-secondary)' }}>{it.description}</div>
                 </div>
-                <div style={{ minWidth: 80, textAlign: 'right', fontWeight: 700 }}>{it.price.toFixed(2)} €</div>
+                <div style={{ minWidth: 80, textAlign: 'right', fontWeight: 700 }}>${it.price.toFixed(2)}</div>
                 <button onClick={() => toggleAvailable(it)} className="btn btn-outline-gold btn-sm">
                   {it.available ? 'Masquer' : 'Activer'}
                 </button>
@@ -109,7 +109,7 @@ export default function AdminMenuPage() {
             <div className="admin-form">
               <div className="field full"><label>Nom</label><input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></div>
               <div className="field full"><label>Description</label><textarea rows={3} value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} /></div>
-              <div className="field"><label>Prix (€)</label><input type="number" step="0.01" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} /></div>
+              <div className="field"><label>Prix ($)</label><input type="number" step="0.01" value={form.price} onChange={(e) => setForm({ ...form, price: e.target.value })} /></div>
               <div className="field"><label>Régime</label>
                 <select value={form.dietary || ''} onChange={(e) => setForm({ ...form, dietary: e.target.value })}>
                   <option value="">Aucun</option>

@@ -19,7 +19,7 @@ export default async function AnalyticsPage() {
       <div className="admin-kpis">
         <div className="admin-kpi admin-kpi--accent">
           <div className="admin-kpi__label">CA total</div>
-          <div className="admin-kpi__value">{k.totalRevenue.toFixed(2)} €</div>
+          <div className="admin-kpi__value">${k.totalRevenue.toFixed(2)}</div>
         </div>
         <div className="admin-kpi">
           <div className="admin-kpi__label">Commandes</div>
@@ -31,7 +31,7 @@ export default async function AnalyticsPage() {
         </div>
         <div className="admin-kpi">
           <div className="admin-kpi__label">Panier moyen</div>
-          <div className="admin-kpi__value">{k.avgOrderValue.toFixed(2)} €</div>
+          <div className="admin-kpi__value">${k.avgOrderValue.toFixed(2)}</div>
         </div>
       </div>
 
